@@ -6,20 +6,20 @@
 * Для расчета используется API GET запрос http://localhost:8080/fibonacci?from=2&to=6
 * Для проверки работы сервиса доступен простой UI http://localhost:8080
 
-### Установка
+## Установка
 
-* Склонорвать репозиторий `git clone https://github.com/TimGa/fibonacci.git`
-* Развернуть проект `docker-compose up -d`
+* Склонировать репозиторий `git clone https://github.com/TimGa/fibonacci.git`
+* Развернуть проект `cd fibonacci && docker-compose up -d`
 * Установить зависимости `docker-compose exec php composer install`
+* Открыть UI http://localhost:8080
 
-
-### Пример корректного рассчета
+## Пример корректного рассчета
 
 API http://localhost:8080/fibonacci?from=2&to=6
 
 ![good example](example_good.PNG)
 
-### Пример некорректных данных от пользователя
+## Пример некорректных данных от пользователя
 
 API http://localhost:8080/fibonacci?from=2&to=-6
 
