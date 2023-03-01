@@ -1,0 +1,19 @@
+{
+    "name": "timga/fibonacci",
+    "description": "Fibonacci API service",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "TimGa\\Fibonacci\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "TimGa"
+        }
+    ],
+    "require": {
+        "symfony/http-foundation": "^6.2"
+    }
+}
