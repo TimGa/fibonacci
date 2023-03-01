@@ -3,11 +3,11 @@
 namespace TimGa\Fibonacci\Service;
 
 use RedisException;
-use TimGa\Fibonacci\Repository\FibonacciRepository;
+use TimGa\Fibonacci\Repository\FibonacciRepositoryInterface;
 
 class FibonacciCalculator
 {
-    public function __construct(private readonly FibonacciRepository $repository) {}
+    public function __construct(private readonly FibonacciRepositoryInterface $repository) {}
 
     /**
      * Запускает рекурсивный метод расчёта Фибоначчи для указанной последовательности

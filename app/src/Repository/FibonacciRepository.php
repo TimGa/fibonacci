@@ -5,7 +5,7 @@ namespace TimGa\Fibonacci\Repository;
 use Redis;
 use RedisException;
 
-class FibonacciRepository
+class FibonacciRepository implements FibonacciRepositoryInterface
 {
     public function __construct(private readonly Redis $redis) {}
 
