@@ -16,9 +16,10 @@ class InputValidator implements Validator
     private array $errors = [];
 
     /**
-     * Фибоначчи для числа большего чем 92 не помещается в int64
+     * Расчёт Фибоначчи для 10 000 занимет несколько секунд -
+     * в этом случае будет заменто наличие кэширования при выполнении повторных расчётов
      */
-    private const MAX_FIBONACCI = 92;
+    private const MAX_FIBONACCI = 10000;
 
     /**
      * @param Input $input Пришло от пользователя

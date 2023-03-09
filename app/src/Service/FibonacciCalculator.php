@@ -28,7 +28,7 @@ class FibonacciCalculator
      * или для полученее старых ранее рассчитанных значений
      * @throws RedisException
      */
-    public function calcFibonacci(int $num): int
+    public function calcFibonacci(int $num): string
     {
         if ($num === 0) {
             return 0;
@@ -41,8 +41,40 @@ class FibonacciCalculator
             return $cached;
         }
 
-        $result = $this->calcFibonacci($num - 2) + $this->calcFibonacci($num - 1);
+        $result = $this->sumStringifiedIntegers($this->calcFibonacci($num - 2), $this->calcFibonacci($num - 1));
         $this->repository->store($num, $result);
         return $result;
+    }
+
+    /**
+     * Метод ссумирует числа, записанные в виде строки
+     * Число, которое можно положить в int64 - ограничено: в таком случае невозможно посчитать число Фибоначчи для >92
+     * Поэтому числа пришлось перевести в string, чтобы их длинна не ограничивалась
+     */
+    public function sumStringifiedIntegers(string $a, string $b): string
+    {
+        $a = array_reverse(str_split($a));
+        $b = array_reverse(str_split($b));
+        $result = [];
+        $ten = 0;
+
+        $len = (max(count($a), count($b)));
+
+        for ($i=0; $i<$len; $i++) {
+            $aDigit = $a[$i] ?? 0;
+            $bDigit = $b[$i] ?? 0;
+            $sumDigit = $aDigit + $bDigit + $ten;
+            $ten = 0;
+            if ($sumDigit > 9) {
+                $ten = 1;
+                $sumDigit = $sumDigit % 10;
+            }
+            $result[] = $sumDigit;
+        }
+        if ($ten === 1) {
+            $result[] = 1;
+        }
+
+        return implode('', array_reverse($result));
     }
 }

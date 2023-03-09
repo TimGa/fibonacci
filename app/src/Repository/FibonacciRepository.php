@@ -12,7 +12,7 @@ class FibonacciRepository implements FibonacciRepositoryInterface
     /**
      * @throws RedisException
      */
-    public function store(int $key, int $value): void
+    public function store(int $key, string $value): void
     {
         $this->redis->set($key, $value);
     }
@@ -20,7 +20,7 @@ class FibonacciRepository implements FibonacciRepositoryInterface
     /**
      * @throws RedisException
      */
-    public function find(int $key): ?int
+    public function find(int $key): ?string
     {
         $result = $this->redis->get($key);
         if ($result === false) {
